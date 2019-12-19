@@ -26,3 +26,6 @@
         ("c" "Challenge" entry (file (concat org-directory "/reminders.org"))
          "TODO")
         ))
+
+(setq org-hide-emphasis-markers t)
+

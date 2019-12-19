@@ -53,6 +53,7 @@ This function should only modify configuration layer settings."
      deft
      emacs-lisp
      epub
+     pdf
      git
      git
      github
@@ -67,18 +68,19 @@ This function should only modify configuration layer settings."
      lsp
      markdown
      multiple-cursors
+     helpful
      ;; neotree
      treemacs
      nginx
      node
      org
-     org-addon
+     ;; org-addon
      pandoc
      prettier
      (evil-snipe :variables
-                 evil-snipe-enable-alternate-f-and-t-behaviors t
-                 )
-     parinfer
+                 evil-snipe-enable-alternate-f-and-t-behaviors t)
+     
+     ;; parinfer ;; May return at a later date...
      prodigy
      python
      (ranger :variables
@@ -102,6 +104,7 @@ This function should only modify configuration layer settings."
      tern
      themes-megapack
      version-control
+     vue
      ;; vinegar
      windows-scripts
      web-beautify
@@ -120,6 +123,7 @@ This function should only modify configuration layer settings."
                  javascript-repl 'nodejs
                  js2-include-node-externs t
                  node-add-modules-path t)
+     json
      (c-c++ :variables c-c++-adopt-subprojects t
             c-c++-backend 'lsp-cquery
             c-c++-lsp-executable (file-truename "~/bin/cquery")
@@ -128,8 +132,8 @@ This function should only modify configuration layer settings."
          ;; go-tab-width 4
          gofmt-command "goimports"
          gofmt-before-save t
-         go-backend 'lsp
-         )
+         go-backend 'lsp)
+     
      (shell :variables
             helm-show-completion-display-function #'helm-show-completion-default-display-function
             shell-default-shell 'term
@@ -143,8 +147,8 @@ This function should only modify configuration layer settings."
    '(nov go-scratch exec-path-from-shell irony
          ;; esh-autosuggest mocha
          ;; elisp-format
-         rainbow-blocks
-         )
+         rainbow-blocks)
+   
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
 
@@ -271,7 +275,7 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(cyberpunk)
+   dotspacemacs-themes '(grandshell)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
    ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
@@ -281,8 +285,8 @@ It should only modify the values of Spacemacs settings."
    ;; spaceline theme. Value can be a symbol or list with additional properties.
    ;; (default '(spacemacs :separator wave :separator-scale 1.5))
    dotspacemacs-mode-line-theme
-   '(spacemacs :separator slant
-               :separator-scale 1.5)
+   '(vim-powerline :separator slant
+                   :separator-scale 1.5)
    ;; If non-nil the cursor color matches the state color in GUI Emacs.
    ;; (default t)
    dotspacemacs-colorize-cursor-according-to-state t
@@ -554,3 +558,24 @@ you should place your code here."
   ;; Tramp customization
   (setq tramp-shell-prompt-pattern "\\(?:^\\|\r\\)[^]#$%>\n]*#?[]#$%>].* *\\(^[\\[[0-9;]*[a-zA-Z] *\\)*"))
 
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   '("26d49386a2036df7ccbe802a06a759031e4455f07bda559dcf221f53e8850e69" default))
+ '(package-selected-packages
+   '(zenburn-theme zen-and-art-theme zeal-at-point yatemplate yasnippet-snippets yapfify xterm-color ws-butler writeroom-mode winum white-sand-theme which-key web-mode web-beautify vterm volatile-highlights vi-tilde-fringe uuidgen use-package unfill underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme treemacs-projectile treemacs-magit treemacs-evil toxi-theme toml-mode toc-org tide terminal-here tao-theme tangotango-theme tango-plus-theme tango-2-theme tagedit systemd symon symbol-overlay sunny-day-theme sublime-themes subatomic256-theme subatomic-theme string-inflection stickyfunc-enhance srefactor sql-indent spaceline-all-the-icons spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smeargle slime-company slim-mode shell-pop seti-theme scss-mode sass-mode salt-mode rjsx-mode reverse-theme restclient-helm restart-emacs rebecca-theme ranger rainbow-delimiters rainbow-blocks railscasts-theme racer pytest pyenv-mode py-isort purple-haze-theme pug-mode professional-theme prodigy prettier-js powershell popwin pony-mode planet-theme pippel pipenv pip-requirements phoenix-dark-pink-theme phoenix-dark-mono-theme persp-mode pdf-tools pcre2el password-generator paradox pandoc-mode ox-rfc ox-pandoc overseer orgit organic-green-theme org-projectile org-present org-pomodoro org-mime org-download org-cliplink org-bullets org-brain opencl-mode open-junk-file omtose-phellack-theme omnisharp oldlace-theme occidental-theme obsidian-theme ob-restclient ob-http nov nodejs-repl noctilux-theme nginx-mode naquadah-theme nameless mwim mustang-theme multi-term move-text monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme markdown-toc majapahit-theme magit-svn magit-gitflow madhat2r-theme lush-theme lsp-ui lsp-treemacs lsp-python-ms lorem-ipsum livid-mode live-py-mode link-hint light-soap-theme kaolin-themes json-navigator js2-refactor js-doc jinja2-mode jbeans-theme jazz-theme irony ir-black-theme insert-shebang inkpot-theme indent-guide importmagic import-js impatient-mode ietf-docs ibuffer-projectile hybrid-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation heroku-theme hemisu-theme helpful helm-xref helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-org helm-mode-manager helm-make helm-lsp helm-ls-git helm-gitignore helm-git-grep helm-flx helm-descbinds helm-dash helm-css-scss helm-company helm-c-yasnippet helm-ag hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-translate google-c-style golden-ratio godoctor go-tag go-scratch go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gnuplot glsl-mode gitignore-templates github-search github-clone gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md gandalf-theme fuzzy forge font-lock+ flyspell-correct-helm flycheck-ycmd flycheck-rust flycheck-rtags flycheck-pos-tip flycheck-package flycheck-bashate flx-ido flutter flatui-theme flatland-theme fish-mode fill-column-indicator farmhouse-theme fancy-battery eziam-theme eyebrowse expand-region exotica-theme exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-snipe evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu espresso-theme eshell-z eshell-prompt-extras esh-help engine-mode emmet-mode elisp-slime-nav editorconfig dumb-jump dracula-theme dotenv-mode doom-themes doom-modeline dockerfile-mode docker django-theme disaster diminish diff-hl devdocs deft define-word dart-server dart-mode darktooth-theme darkokai-theme darkmine-theme darkburn-theme dap-mode dakrone-theme cython-mode cyberpunk-theme cuda-mode csv-mode cquery cpp-auto-include company-ycmd company-web company-tern company-statistics company-shell company-rtags company-restclient company-reftex company-lsp company-go company-c-headers company-auctex company-ansible company-anaconda common-lisp-snippets column-enforce-mode color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme clean-aindent-mode clang-format chocolate-theme cherry-blossom-theme centered-cursor-mode ccls cargo busybee-theme bubbleberry-theme browse-at-remote bm blacken birds-of-paradise-plus-theme badwolf-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile apropospriate-theme anti-zenburn-theme ansible-doc ansible ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme add-node-modules-path ace-link ace-jump-helm-line ac-ispell)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+)
